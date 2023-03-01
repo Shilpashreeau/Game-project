@@ -1,16 +1,17 @@
 * {
   padding: 0;
-  margin: 10px;
+  margin: 0;
   box-sizing: border-box;
 }
 body {
   background-color: #d1a625;
-
+  /*flex-flow: column nowrap;*//*e*/
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content:center;
   align-items: center;
+  
 
   /* background: #060AB2; */
 }
@@ -18,12 +19,14 @@ body {
   justify-content: center;
   text-align: center;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  
 }
 h1 {
   color: crimson;
+  
 }
 .time-duration {
-  justify-content: center;
+  justify-content:center;
   text-align: center;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
@@ -35,17 +38,81 @@ main {
   /* flex-direction: column; */
   flex-wrap: wrap;
   align-items: center;
-  /* justify-content: space-evenly; */
-
+  justify-content: space-around;
+    
   background-color: blueviolet;
-  /* height: 100vh; */
-  padding: 40px;
-  width: 115vh;
+  height: 80vh;
+  padding-top:10px;
+  padding-bottom: 10px; 
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 80vh;
 }
 .cards {
-  background-color: aquamarine;
-  /* position: relative; */
+    background-color: blueviolet;
+  /* position: relative;  */
 }
 img {
-  width: 100px;
+  width: 75px;
 }
+/* .back{
+   position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  /* height: 100%; 
+  max-height:100%;
+}
+
+
+.front{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* backface-visibility: hidden;   
+    height: 100%;
+    max-height:100%;
+    /* background: #1C7CCC;  
+   transition: all 0.25s;
+} */
+
+.cards {
+    width: 25%;
+    /* height: calc(33.333% - 10px); */
+    /* margin: 5px; */
+    position: relative;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+    padding-bottom: 50px;
+   
+    /* min-width: 500px; */
+    /* box-shadow: 1px 1px 1px rgba(0,0,0,.3); */
+  }
+  
+  .cards:active {
+    transform: scale(0.97);
+    transition: transform .2s;
+    
+  }
+  
+  .cards.flip {
+    transform: rotateY(180deg);
+  }
+  
+  .front,
+  .back {
+    /* width: 100%; */
+    /* height: 100%; */
+    /* padding: 20px; */
+    position: absolute;
+    /* border-radius: 5px; */
+    /* background: #1C7CCC; */
+    /* backface-visibility: hidden; */
+    overflow: hidden;
+  }
+  
+  .front {
+    transform: rotateY(180deg);
+  }

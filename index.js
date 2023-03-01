@@ -17,8 +17,28 @@ function countDown() {
 let countDownTimerId = setInterval(countDown, 1000);
 
 //Array.from to convert HTMLCollection into array to use concat method
-const heartArray=Array.from(document.getElementsByTagName('img'));
+const heartArray = Array.from(document.querySelectorAll(".cards"));
 console.log(heartArray);
 
-const duplicateHeartArray=cardsArray.concat(cardsArray);
-console.log(duplicateHeartArray);
+//const duplicateHeartArray=heartArray.concat(heartArray);
+//console.log(duplicateHeartArray);
+const main = document.querySelector(".game-layout");
+heartArray.forEach((ele) => {
+  let card = document.createElement("div");
+  // Apply a cards class to that div
+  card.classList.add("cards");
+//   card.classList.add("back");
+
+  card.innerHTML = ele.innerHTML;
+  console.log(card);
+  // Append the div to the main
+  main.appendChild(card);
+});
+console.log(main);
+// const div=document.createElement('div');
+// div.setAttribute('class','cards');
+
+//main.appendChild(ele);
+// main.append(div);
+//console.log(mainHeartArray);
+//main.append(section);
