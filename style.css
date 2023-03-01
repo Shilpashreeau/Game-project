@@ -6,7 +6,7 @@
 body {
   background-color: #d1a625;
   /*flex-flow: column nowrap;*//*e*/
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content:center;
@@ -39,21 +39,20 @@ main {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
-    
-  background-color: blueviolet;
-  height: 80vh;
-  padding-top:10px;
-  padding-bottom: 10px; 
-  padding-left: 10px;
-  padding-right: 10px;
-  width: 80vh;
+     background-color: blueviolet;
+  height: 100vh;
+  /* padding-top:10px; */
+  /* padding-bottom: 10px;  */
+  /* padding-left: 10px; */
+  /* padding-right: 10px; */
+  width: 100vh;
+  perspective: 1000px;
 }
-.cards {
-    background-color: blueviolet;
-  /* position: relative;  */
-}
+
 img {
   width: 75px;
+
+  
 }
 /* .back{
    position: absolute;
@@ -65,7 +64,7 @@ img {
 }
 
 
-.front{
+ /*.front{
     position: absolute;
     left: 0;
     bottom: 0;
@@ -75,17 +74,20 @@ img {
     max-height:100%;
     /* background: #1C7CCC;  
    transition: all 0.25s;
-} */
+} */ 
 
 .cards {
-    width: 25%;
-    /* height: calc(33.333% - 10px); */
+    
+    /* width: calc(25% - 10px);calc(100/4 - 10px) */
+    width: calc(100%/4 - 10px);
+    height: calc(100%/4 - 10px);
     /* margin: 5px; */
     position: relative;
     transform: scale(1);
     transform-style: preserve-3d;
     transition: transform .5s;
     padding-bottom: 50px;
+    background-color: blueviolet;
    
     /* min-width: 500px; */
     /* box-shadow: 1px 1px 1px rgba(0,0,0,.3); */
@@ -97,22 +99,29 @@ img {
     
   }
   
-  .cards.flip {
+  .flip {
     transform: rotateY(180deg);
-  }
+    /* z-index: 0; */
+     }
   
   .front,
   .back {
-    /* width: 100%; */
-    /* height: 100%; */
-    /* padding: 20px; */
+    width: 100%;
+    height: 100%;
+    padding: 20px;
     position: absolute;
     /* border-radius: 5px; */
     /* background: #1C7CCC; */
-    /* backface-visibility: hidden; */
+    backface-visibility: hidden;
     overflow: hidden;
+   
   }
   
   .front {
     transform: rotateY(180deg);
+    
   }
+
+.selected{
+    border:5px solid maroon;
+}
