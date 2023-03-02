@@ -1,20 +1,39 @@
 //*=========================Setting time for the game==================
 const time = document.getElementById("time-left");
+const div=document.querySelector('.time-duration');
 //console.log(time);
 //setting limit to 30 seconds
-let currentTime = 30;
+let countDownTimerId = setInterval(countDown, 1000);
+let currentTime = 10;
 let timerId = null;
 function countDown() {
+    
   currentTime--;
   time.textContent = currentTime;
 
   if (currentTime == 0) {
     clearInterval(countDownTimerId);
     clearInterval(timerId);
+   const h3= document.createElement('h3');
+   h3.classList.add('time-duration');
+   h3.innerHTML="Game over";
+   time.innerHTML=h3.innerHTML;
+    const button=document.createElement('button');
+    button.classList.add('time-duration')
+    button.innerHTML="play again";
+    div.append(button);
+    //replay(button);
+    button.addEventListener('click', e => {
+       countDown();
+        
+      });
   }
+  
 }
-
-let countDownTimerId = setInterval(countDown, 1000);
+// function replay(btn){
+// btn.addEventListener('click',countDown);    
+    
+// }
 //*===============================Duplicating the cards==============
 //Array.from to convert HTMLCollection into array to use concat method
 const heartArray = Array.from(document.querySelectorAll(".cards"));
@@ -24,14 +43,16 @@ console.log(heartArray);
 //console.log(duplicateHeartArray);
 const main = document.querySelector(".game-layout");
 heartArray.forEach((ele) => {
+  console.dir(ele);
   let card = document.createElement("div");
   // Apply a cards class to that div
   card.classList.add("cards");
- 
+
   //   card.classList.add("back");
 
   card.innerHTML = ele.innerHTML;
-  console.log(card);
+  card.dataset.framework = ele.dataset.framework;
+  console.dir(card);
   // Append the div to the main
   main.appendChild(card);
 });
@@ -46,33 +67,33 @@ console.log(main);
 
 //*=========================Randomizing the cards=================
 let allCards = document.querySelectorAll(".cards");
-
-function shuffle() {
+//immediately invoked function-> variables will be discarded after function is executed
+(function shuffle() {
   allCards.forEach((heart) => {
     let randomPos = Math.floor(Math.random() * 12);
     heart.style.order = randomPos;
   });
-}
-shuffle();
+})();//self executing anonymous function
+
 console.log(allCards);
 
 // const allImages=document.querySelectorAll('.front','.back')
 //  console.log(allImages);
 //*===================Adding event listener to allImages=============
-allCards.forEach(card => card.addEventListener('click', flipTheCard));
+allCards.forEach((card) => card.addEventListener("click", flipTheCard));
 // allCards.forEach((heart) => {
 //   heart.addEventListener("click", function (event) {
-    // let clicked = event.target;
-    //console.dir(clicked);
-    //toggle-if the class is there remove it else add it
-    // clicked.classList.toggle("flip");
-    //flipTheCard(clicked);
+// let clicked = event.target;
+//console.dir(clicked);
+//toggle-if the class is there remove it else add it
+// clicked.classList.toggle("flip");
+//flipTheCard(clicked);
 
-    //trying to add border not working
-    // if (clicked.classList !== ".front" && clicked.classList !== ".back") {
-    //   return;
-    // }
-    // clicked.classList.add(".selected");
+//trying to add border not working
+// if (clicked.classList !== ".front" && clicked.classList !== ".back") {
+//   return;
+// }
+// clicked.classList.add(".selected");
 //   });
 // });
 // let allCards = document.querySelectorAll('.cards');
@@ -86,27 +107,65 @@ allCards.forEach(card => card.addEventListener('click', flipTheCard));
 //*=========== two choices====================
 
 let isFlipped = false;
+let lockBoard = false;
 let firstCard, secondCard;
 function flipTheCard() {
+    
+    let clicked = this;
+  if (lockBoard) {
+    return;
+  }
+  if (clicked === firstCard) {
+    return;
+  }
   //  this.classList.toggle("flip");
-  let clicked=this;
+  
   clicked.classList.toggle("flip");
- 
+
   if (!isFlipped) {
     isFlipped = true;
     firstCard = clicked;
+    return;
     //console.log(isFlipped, firstCard);
-  } else {
-    isFlipped=false;
-    secondCard=clicked;
   }
-  //*====================Matching two hearts==========
-  if(firstCard.dataset.framework===secondCard.dataset.framework){
-
-//matched
-firstCard.removeEventListener('click',flipTheCard);
-secondCard.removeEventListener('click',flipTheCard);
+  
+  secondCard = clicked;
+  checkMatch();
 }
-}
-
 //*====================Matching two hearts==========
+function checkMatch() {
+  if (firstCard.dataset.framework === secondCard.dataset.framework) {
+    //matched
+    disableCards();
+  } else {
+    unFlipCards();
+  }
+}
+function disableCards() {
+  firstCard.removeEventListener("click", flipTheCard);
+  secondCard.removeEventListener("click", flipTheCard);
+  reset();
+}
+//no match
+function unFlipCards() {
+  lockBoard = true;
+  setTimeout(() => {
+    firstCard.classList.remove("flip");
+    secondCard.classList.remove("flip");
+    reset();
+  }, 1500);
+}
+function reset(){
+isFlipped=false
+lockBoard=false
+firstCard=null;
+secondCard=null;
+}
+
+//logic for win state needs to go on top dont know where
+if (currentTime>=0 && allCards.className==="flip"){
+console.log("win");
+}
+else{
+console.log("loss");
+}
