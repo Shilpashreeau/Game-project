@@ -2,94 +2,60 @@
 const time = document.getElementById("time-left");
 const div = document.querySelector(".time-duration");
 const playAgainBtn = document.getElementById("play-again");
-const win=document.getElementById("win-status");
-const lose=document.getElementById("lose-status");
+const win = document.getElementById("win-status");
+const lose = document.getElementById("lose-status");
+const main = document.querySelector(".game-layout");
 let button;
-//console.log(time);
 
-//setting limit to 60 seconds
+//setting time limit to 60 seconds
+let currentTime = 60;
 let countDownTimerId = setInterval(countDown, 1000);
-let currentTime = 10;
 
 function countDown() {
   currentTime--;
   time.textContent = currentTime;
   if (currentTime >= 0 && checkFlippedCards(allCards)) {
-    win.style.display='block';
+    win.style.display = "block";
     clearInterval(countDownTimerId);
-    time.style.display='none';
+    time.style.display = "none";
   } /*else {
    // console.log("loss");
    lose.style.display='block';
   }*/
 
   if (currentTime <= 0) {
+    //restarts the timer 
     clearInterval(countDownTimerId);
 
-    // clearInterval(timerId);
-    //Adding Game over button if if specified time is over
+   //Adding Game over if specified time is over
     const h3 = document.createElement("h3");
     h3.classList.add("time-duration");
     h3.innerHTML = "Game over";
-    h3.style.color="violet";
+    h3.style.color = "violet";
     time.innerHTML = h3.innerHTML;
     playAgainBtn.style.display = "block";
-    // currentTime=10;
-    //countDownTimerId;
-
-    //playAgainBtn.style.display="none";
-    //playAgain();
-    // countDown();
-    // playAgain();
-    /*button = document.createElement("button");
-    button.classList.add("time-duration");
-    button.innerHTML = "play again";
-    div.append(button);*/
-    //replay(button) ----------------------------------------> not working
-  }
+          }
 }
+
+//*==========================Play again====================
 playAgainBtn.addEventListener("click", reload);
 function reload() {
   window.location.reload();
 }
 
-// button.addEventListener("click", playAgain);
-// function playAgain()
-//  {
-//     console.log("working");
-//     countDown();
-//   }
-
-// function replay(btn){
-// btn.addEventListener('click',countDown);
-
-// }
 //*===============================Duplicating the cards==============
-//Array.from to convert HTMLCollection into array to use concat method
+//Array.from to convert HTMLCollection into array 
 const heartArray = Array.from(document.querySelectorAll(".cards"));
-console.log(heartArray);
-const main = document.querySelector(".game-layout");
 heartArray.forEach((ele) => {
-  console.dir(ele);
   let card = document.createElement("div");
-  // Apply a cards class to that div
+  // Apply a cards class to created div
   card.classList.add("cards");
-
-  //   card.classList.add("back");
-
   card.innerHTML = ele.innerHTML;
   card.dataset.framework = ele.dataset.framework;
-  console.dir(card);
   // Append the div to the main
   main.appendChild(card);
 });
-console.log(main);
-// const div=document.createElement('div');
-// div.setAttribute('class','cards');
-//main.appendChild(ele);
-// main.append(div);
-//console.log(mainHeartArray);
-//main.append(section);
+//console.log(main);
 
 //*=========================Randomizing the cards=================
 let allCards = document.querySelectorAll(".cards");
@@ -100,12 +66,10 @@ let allCards = document.querySelectorAll(".cards");
     heart.style.order = randomPos;
   });
 })(); //self executing anonymous function
+//console.log(allCards);
 
-console.log(allCards);
-
-//*===================Adding event listener to allImages=============
+//*===================Adding event listener to all the images=============
 allCards.forEach((card) => card.addEventListener("click", flipTheCard));
-
 let isFlipped = false;
 let lockBoard = false;
 let firstCard, secondCard;
@@ -117,7 +81,6 @@ function flipTheCard() {
   if (clicked === firstCard) {
     return;
   }
-  //  this.classList.toggle("flip");
 
   clicked.classList.toggle("flip");
 
@@ -125,9 +88,7 @@ function flipTheCard() {
     isFlipped = true;
     firstCard = clicked;
     return;
-    //console.log(isFlipped, firstCard);
   }
-
   secondCard = clicked;
   checkMatch();
 }
@@ -161,35 +122,10 @@ function reset() {
   firstCard = null;
   secondCard = null;
 }
-
-//logic for win state needs to go on top dont know where not working
-
-
+//function that checks if the cards flipped belongs to class flip.
 function checkFlippedCards(arr) {
   arr = Array.from(arr);
- //console.log(arr);
- // console.log(arr.every((card) => card.classList.contains("flip")));
+  //console.log(arr.every((card) => card.classList.contains("flip")));
   return arr.every((card) => card.classList.contains("flip"));
 }
 
-// const allImages=document.querySelectorAll('.front','.back')
-//  console.log(allImages);
-// allCards.forEach((heart) => {
-//   heart.addEventListener("click", function (event) {
-// let clicked = event.target;
-//console.dir(clicked);
-//toggle-if the class is there remove it else add it
-// clicked.classList.toggle("flip");
-//flipTheCard(clicked);
-//trying to add border not working
-// if (clicked.classList !== ".front" && clicked.classList !== ".back") {
-//   return;
-// }
-// clicked.classList.add(".selected");
-//   });
-// });
-// let allCards = document.querySelectorAll('.cards');
-// function flipCard() {
-//   this.classList.toggle('flip');
-// }
-// cards.forEach(card => card.addEventListener('click', flipCard));
