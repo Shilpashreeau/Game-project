@@ -19,6 +19,10 @@ body {
   text-align: center;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
+#play-again{
+
+display: none;
+}
 h1 {
   color: crimson;
 }

@@ -1,42 +1,58 @@
 //*=========================Setting time for the game==================
 const time = document.getElementById("time-left");
 const div = document.querySelector(".time-duration");
+const playAgainBtn = document.getElementById("play-again");
 let button;
 //console.log(time);
 
-//setting limit to 30 seconds
+//setting limit to 60 seconds
 let countDownTimerId = setInterval(countDown, 1000);
 let currentTime = 10;
-//let timerId = null;
 
 function countDown() {
   currentTime--;
   time.textContent = currentTime;
+  if (currentTime >= 0 && checkFlippedCards(allCards)) {
+    console.log("win");
+  } else {
+    console.log("loss");
+  }
 
-  if (currentTime == 0) {
+  if (currentTime <= 0) {
     clearInterval(countDownTimerId);
-    //timerId=null;
-   // clearInterval(timerId);
+
+    // clearInterval(timerId);
     //Adding Game over button if if specified time is over
     const h3 = document.createElement("h3");
     h3.classList.add("time-duration");
     h3.innerHTML = "Game over";
     time.innerHTML = h3.innerHTML;
-     button = document.createElement("button");
+    playAgainBtn.style.display = "block";
+    // currentTime=10;
+    //countDownTimerId;
+
+    //playAgainBtn.style.display="none";
+    //playAgain();
+    // countDown();
+    // playAgain();
+    /*button = document.createElement("button");
     button.classList.add("time-duration");
     button.innerHTML = "play again";
-    div.append(button);
+    div.append(button);*/
     //replay(button) ----------------------------------------> not working
-    
   }
 }
+playAgainBtn.addEventListener("click", reload);
+function reload() {
+  window.location.reload();
+}
+
 // button.addEventListener("click", playAgain);
 // function playAgain()
 //  {
 //     console.log("working");
 //     countDown();
 //   }
-
 
 // function replay(btn){
 // btn.addEventListener('click',countDown);
@@ -141,10 +157,13 @@ function reset() {
 }
 
 //logic for win state needs to go on top dont know where not working
-if (currentTime >= 0 && allCards.className === "flip") {
-  console.log("win");
-} else {
-  console.log("loss");
+
+
+function checkFlippedCards(arr) {
+  arr = Array.from(arr);
+ //console.log(arr);
+ // console.log(arr.every((card) => card.classList.contains("flip")));
+  return arr.every((card) => card.classList.contains("flip"));
 }
 
 // const allImages=document.querySelectorAll('.front','.back')
