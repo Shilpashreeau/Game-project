@@ -23,6 +23,14 @@ body {
 
 display: none;
 }
+#win-status{
+    display: none;
+
+}
+#lose-status{
+    display: none;
+}
+
 h1 {
   color: crimson;
 }
@@ -32,7 +40,12 @@ h1 {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 h3 {
-  color: blueviolet;
+  color: #8a2be2;
+}
+button{
+    padding-left:20px;
+    padding-right: 20px;
+    background-color: crimson;
 }
 main {
   display: flex;

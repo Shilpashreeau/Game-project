@@ -2,6 +2,8 @@
 const time = document.getElementById("time-left");
 const div = document.querySelector(".time-duration");
 const playAgainBtn = document.getElementById("play-again");
+const win=document.getElementById("win-status");
+const lose=document.getElementById("lose-status");
 let button;
 //console.log(time);
 
@@ -13,10 +15,13 @@ function countDown() {
   currentTime--;
   time.textContent = currentTime;
   if (currentTime >= 0 && checkFlippedCards(allCards)) {
-    console.log("win");
-  } else {
-    console.log("loss");
-  }
+    win.style.display='block';
+    clearInterval(countDownTimerId);
+    time.style.display='none';
+  } /*else {
+   // console.log("loss");
+   lose.style.display='block';
+  }*/
 
   if (currentTime <= 0) {
     clearInterval(countDownTimerId);
@@ -26,6 +31,7 @@ function countDown() {
     const h3 = document.createElement("h3");
     h3.classList.add("time-duration");
     h3.innerHTML = "Game over";
+    h3.style.color="violet";
     time.innerHTML = h3.innerHTML;
     playAgainBtn.style.display = "block";
     // currentTime=10;
