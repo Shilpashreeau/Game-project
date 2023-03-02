@@ -1,34 +1,43 @@
 //*=========================Setting time for the game==================
 const time = document.getElementById("time-left");
 const div = document.querySelector(".time-duration");
+let button;
 //console.log(time);
 
 //setting limit to 30 seconds
 let countDownTimerId = setInterval(countDown, 1000);
 let currentTime = 10;
-let timerId = null;
+//let timerId = null;
+
 function countDown() {
   currentTime--;
   time.textContent = currentTime;
 
   if (currentTime == 0) {
     clearInterval(countDownTimerId);
-    clearInterval(timerId);
+    //timerId=null;
+   // clearInterval(timerId);
     //Adding Game over button if if specified time is over
     const h3 = document.createElement("h3");
     h3.classList.add("time-duration");
     h3.innerHTML = "Game over";
     time.innerHTML = h3.innerHTML;
-    const button = document.createElement("button");
+     button = document.createElement("button");
     button.classList.add("time-duration");
     button.innerHTML = "play again";
     div.append(button);
     //replay(button) ----------------------------------------> not working
-    button.addEventListener("click", (e) => {
-      countDown();
-    });
+    
   }
 }
+// button.addEventListener("click", playAgain);
+// function playAgain()
+//  {
+//     console.log("working");
+//     countDown();
+//   }
+
+
 // function replay(btn){
 // btn.addEventListener('click',countDown);
 
