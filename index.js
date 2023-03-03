@@ -14,7 +14,7 @@ var mySound;
 var myMusic;
 body.onload = startMusic();
 function startMusic() {
-    mySound=new sound("");
+  mySound = new sound("");
   myMusic = new sound("HeartBeat.mp3");
   myMusic.play();
 }
