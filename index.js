@@ -8,7 +8,7 @@ const main = document.querySelector(".game-layout");
 let button;
 
 //setting time limit to 60 seconds
-let currentTime = 60;
+let currentTime = 100;
 let countDownTimerId = setInterval(countDown, 1000);
 
 function countDown() {
@@ -30,8 +30,8 @@ function countDown() {
    //Adding Game over if specified time is over
     const h3 = document.createElement("h3");
     h3.classList.add("time-duration");
-    h3.innerHTML = "Game over";
-    h3.style.color = "violet";
+        h3.innerHTML = "Game over";
+    //h3.style.color = "#AD7BE9";
     time.innerHTML = h3.innerHTML;
     playAgainBtn.style.display = "block";
           }
