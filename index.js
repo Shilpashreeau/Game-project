@@ -8,7 +8,7 @@ const main = document.querySelector(".game-layout");
 let button;
 
 //setting time limit to 60 seconds
-let currentTime = 100;
+let currentTime = 60;
 let countDownTimerId = setInterval(countDown, 1000);
 
 function countDown() {
