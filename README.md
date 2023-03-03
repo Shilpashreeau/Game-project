@@ -1,7 +1,8 @@
 ## **Colored Hearts Matching Game**
 #
 
-[Game](https:www.github.com)
+### Give it a try to match the hearts here => [Game]( https://shilpashreeau.github.io/Game-project/)
+
 #
 ## **Built With**
 #
@@ -30,15 +31,20 @@ OR
 #
 ## **Wire frame**
 #
-![Wireframe1](/../<main>/path/to/Wireframe1.png?raw=true "Optional Title")
 
-![Wireframe1](/../<main>/path/to/Wireframe1.png?raw=true "Optional Title")
 
-![Wireframe1](/../<main>/path/to/Wireframe1.png?raw=true "Optional Title")
+![Wireframe1](/images/Wireframe1.png "Picture shows when user is playing")
+
+![Wireframe2](/images/Wireframe2.png "Picture shows when user did not finish the game on time")
+
+![Wireframe3](/images/Wireframe3.png "Picture shows win status")
 #
-## **Game Rule**
+## **Game Feature**
 #
-- Has only one mode, one level. You need to find all matched hearts in 60s. You need to click on pulsing heart !
+
+- Has only one mode, one level.
+- You need to find all matched hearts in 60s. You need to click on pulsing heart !
+- You can hear heart beat background music !
 - When a same color hearts are matched, they remain flipped. 
 - When game is timeout, Game Over message will be displayed.
 - Game can be played again by clicking Play again button.
@@ -46,6 +52,24 @@ OR
 - You can refresh the page to play agin after winning the game.
 - Hearts will be randomized every time you start a new game.
 
+#
+## **Future updates**
+#
+
+- Adding sound when two heart colors are matched.
+- Letting user to play again if they win, without refreshing the page.
+- Heart sprinkles in the background when two heart colors matched.
+
+#
+## **Contribution**
+#
+If you have a suggestion that would make this game better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Thanks again!
+
+- Fork the Project
+- Create your New-Feature Branch (git checkout -b New-Feature)
+- Commit your Changes (git commit -m 'Add some interesting features')
+- Push to the Branch (git push origin New-Feature)
+- Open a Pull Request
 
 #
 ## **Author / Contact**

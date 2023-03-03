@@ -5,31 +5,29 @@ const playAgainBtn = document.getElementById("play-again");
 const win = document.getElementById("win-status");
 const lose = document.getElementById("lose-status");
 const main = document.querySelector(".game-layout");
-const body = document.querySelector('body');
-const front=document.querySelectorAll(".front");
+const body = document.querySelector("body");
+const front = document.querySelectorAll(".front");
 let button;
 
 //Sound function
 var mySound;
 var myMusic;
-body.onload=startMusic();
+body.onload = startMusic();
 function startMusic() {
-   // myGamePiece = new component(30, 30, "red", 10, 120);
-  // mySound = new sound("bounce.mp3");
-    myMusic = new sound("HeartBeat.mp3");
-    myMusic.play();
+    mySound=new sound("");
+  myMusic = new sound("HeartBeat.mp3");
+  myMusic.play();
 }
 function sound(src) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function(){
-    
-        this.sound.play();
-    }
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function () {
+    this.sound.play();
+  };
 }
 
 //setting time limit to 60 seconds
@@ -49,17 +47,17 @@ function countDown() {
   }*/
 
   if (currentTime <= 0) {
-    //restarts the timer 
+    //restarts the timer
     clearInterval(countDownTimerId);
 
-   //Adding Game over if specified time is over
+    //Adding Game over if specified time is over
     const h3 = document.createElement("h3");
     h3.classList.add("time-duration");
-        h3.innerHTML = "Game over";
+    h3.innerHTML = "Game over";
     //h3.style.color = "#AD7BE9";
     time.innerHTML = h3.innerHTML;
     playAgainBtn.style.display = "block";
-          }
+  }
 }
 
 //*==========================Play again====================
@@ -69,7 +67,7 @@ function reload() {
 }
 
 //*===============================Duplicating the cards==============
-//Array.from to convert HTMLCollection into array 
+//Array.from to convert HTMLCollection into array
 const heartArray = Array.from(document.querySelectorAll(".cards"));
 heartArray.forEach((ele) => {
   let card = document.createElement("div");
@@ -121,7 +119,7 @@ function flipTheCard() {
 
 function checkMatch() {
   if (firstCard.dataset.framework === secondCard.dataset.framework) {
-   // body.style.backgroundColor=firstCard.classList.contains('front')
+    // body.style.backgroundColor=firstCard.classList.contains('front')
     //matched
     disableCards();
   } else {
@@ -129,7 +127,7 @@ function checkMatch() {
   }
 }
 function disableCards() {
-    // this will not flip the matched cards
+  // this will not flip the matched cards
   firstCard.removeEventListener("click", flipTheCard);
   secondCard.removeEventListener("click", flipTheCard);
   reset();
@@ -155,4 +153,3 @@ function checkFlippedCards(arr) {
   //console.log(arr.every((card) => card.classList.contains("flip")));
   return arr.every((card) => card.classList.contains("flip"));
 }
-
