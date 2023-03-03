@@ -5,7 +5,32 @@ const playAgainBtn = document.getElementById("play-again");
 const win = document.getElementById("win-status");
 const lose = document.getElementById("lose-status");
 const main = document.querySelector(".game-layout");
+const body = document.querySelector('body');
+const front=document.querySelectorAll(".front");
 let button;
+
+//Sound function
+var mySound;
+var myMusic;
+body.onload=startMusic();
+function startMusic() {
+   // myGamePiece = new component(30, 30, "red", 10, 120);
+  // mySound = new sound("bounce.mp3");
+    myMusic = new sound("HeartBeat.mp3");
+    myMusic.play();
+}
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+    
+        this.sound.play();
+    }
+}
 
 //setting time limit to 60 seconds
 let currentTime = 60;
@@ -96,6 +121,7 @@ function flipTheCard() {
 
 function checkMatch() {
   if (firstCard.dataset.framework === secondCard.dataset.framework) {
+   // body.style.backgroundColor=firstCard.classList.contains('front')
     //matched
     disableCards();
   } else {
@@ -103,6 +129,7 @@ function checkMatch() {
   }
 }
 function disableCards() {
+    // this will not flip the matched cards
   firstCard.removeEventListener("click", flipTheCard);
   secondCard.removeEventListener("click", flipTheCard);
   reset();
