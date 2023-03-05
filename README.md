@@ -44,7 +44,7 @@ OR
 
 - Has only one mode, one level.
 - You need to find all matched hearts in 60s. You need to click on pulsing heart !
-- You can hear heart beat background music !
+- You can hear heart beat background music in next try if you are not able to win for the first time !
 - When a same color hearts are matched, they remain flipped. 
 - When game is timeout, Game Over message will be displayed.
 - Game can be played again by clicking Play again button.
