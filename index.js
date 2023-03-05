@@ -10,11 +10,12 @@ const front = document.querySelectorAll(".front");
 let button;
 
 //Sound function
-var mySound;
+
 var myMusic;
 body.onload = startMusic();
+
 function startMusic() {
-  mySound = new sound("");
+  
   myMusic = new sound("HeartBeat.mp3");
   myMusic.play();
 }
@@ -35,6 +36,7 @@ let currentTime = 60;
 let countDownTimerId = setInterval(countDown, 1000);
 
 function countDown() {
+  
   currentTime--;
   time.textContent = currentTime;
   if (currentTime >= 0 && checkFlippedCards(allCards)) {
