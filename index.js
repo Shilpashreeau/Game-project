@@ -40,6 +40,7 @@ function countDown() {
   currentTime--;
   time.textContent = currentTime;
   if (currentTime >= 0 && checkFlippedCards(allCards)) {
+    //To display winning message
     win.style.display = "block";
     clearInterval(countDownTimerId);
     time.style.display = "none";
@@ -58,6 +59,7 @@ function countDown() {
     h3.innerHTML = "Game over";
     //h3.style.color = "#AD7BE9";
     time.innerHTML = h3.innerHTML;
+    //to display play-again button
     playAgainBtn.style.display = "block";
   }
 }
